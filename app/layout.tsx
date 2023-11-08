@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/[...nextauth]";
+import { authOptions } from "../pages/api/auth/[...nextauth]";
 import RootProvider from "./RootProvider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,10 +18,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className={inter.className}>
-        <RootProvider session={session}>
-        {children}
-        </RootProvider>
-        </body>
+        <RootProvider session={session}>{children}</RootProvider>
+      </body>
     </html>
   );
 }

@@ -19,6 +19,7 @@ export const authOptions: AuthOptions = {
           country: profile.locale,
           dob: profile.birthday,
           emailVerified: profile.email_verified,
+          name: profile.name,
         };
       },
     }),
@@ -30,8 +31,7 @@ export const authOptions: AuthOptions = {
       return session;
     },
   },
-  pages: {
-  },
+  pages: {},
   debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",
