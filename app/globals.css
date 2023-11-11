@@ -2,5 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .backdrop1 {
+    @apply hover:shadow-3xl transition-all;
+  }
+  .backdrop2 {
+    @apply hover:shadow-4xl transition-all;
+  }
+  .clamper {
+    font-size: 6.7rem;
+  }
+
+  @media screen and (max-width: 1356px) {
+    .clamper {
+      font-size: 6.3rem;
+    }
+  }
+  @media screen and (max-width: 1027px) {
+    .clamper {
+      font-size: 5.9rem;
+    }
+  }
+  @media screen and (max-width: 988px) {
+    .clamper {
+      font-size: 5.2rem;
+    }
+  }
+  @media screen and (max-width: 868px) {
+    .clamper {
+      font-size: 5rem;
+    }
+  }
+  @media screen and (max-width: 834px) {
+    .clamper {
+      font-size: 4.7rem;
+    }
+  }
+  @media screen and (max-width: 780px) {
+    .clamper {
+      font-size: 4.35rem;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .clamper {
+      font-size: 4rem;
+    }
+  }
+  @media screen and (max-width: 556px) {
+    .clamper {
+      /* font-size: 6.7rem; */
+    }
+  }
+  @media screen and (max-width: 456px) {
+    .clamper {
+      /* font-size: 6.7rem; */
+    }
+  }
+  @media screen and (max-width: 356px) {
+    .clamper {
+      /* font-size: 6.7rem; */
+    }
+  }
+  .page-height {
+    height: calc(100vh - 4rem);
+  }
+  .page-width {
+    width: calc(100vh - 4rem);
+  }
+}
 body {
 }

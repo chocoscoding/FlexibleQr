@@ -6,6 +6,7 @@ const config: Config = {
     extend: {
       boxShadow: {
         "3xl": "3px 2px 0px 0px #1F1233",
+        "4xl": "4px 3px 0px 0px #1F1233",
       },
       colors: {
         main: {

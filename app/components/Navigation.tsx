@@ -8,7 +8,7 @@ const Navigation = () => {
   const [open, setOpen] = useState(false);
   const { data } = useSession();
   return (
-    <div className="flex items-center gap-3 relative">
+    <div className="flex items-center gap-3 relative z-[10]">
       <div className="w-[35px] h-[35px] overflow-hidden rounded-full relative border border-main-dark">
         <Image
           src={data?.user?.image || "/user.jpg"}

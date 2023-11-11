@@ -8,7 +8,7 @@ const Navbar = () => {
   const { data, status } = useSession();
   const SignInButton = () => (
     <button
-      className="flex items-center gap-2 px-2 h-[70%] border-2  border-main-dark text-main-dark bg-purple-10 rounded-[4px] font-bold cursor-pointer hover:shadow-3xl transition-all"
+      className="flex items-center gap-2 px-2 h-[70%] border-2  border-main-dark text-main-dark bg-purple-10 rounded font-bold cursor-pointer backdrop1 z-[10]"
       onClick={() => signIn("google")}>
       <FcGoogle className="w-[25px] h-[25px]" />
       Sign in with Google
