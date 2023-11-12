@@ -37,10 +37,10 @@ const Dropdown = () => {
 
   return (
     <>
-      <div className=" border border-main-dark bg-white shadow-3xl absolute top-14 right-0 rounded-sm">
+      <div className=" border border-main-dark bg-white shadow-3xl absolute top-14 right-0 rounded-sm z-50">
         <ul className="select-none">
           {/* dropdown items */}
-          <li className="min-w-full flex items-center gap-2 p-3 border-b border-main-dark w-max hover:bg-yellow-20 cursor-pointer">
+          <li className="min-w-full flex items-center gap-2 p-3 border-b border-main-dark w-max cursor-pointer bg-main-dark text-main-light">
             <p className="flex-shrink-0">{`Welcome ${nameShortener(data?.user?.name)} 🤗`}</p>
           </li>
           {dropdownigationList.map((item, index) => {

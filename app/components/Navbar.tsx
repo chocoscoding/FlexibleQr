@@ -4,8 +4,10 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import Navigation from "./Navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 const Navbar = () => {
   const { data, status } = useSession();
+  const path = usePathname();
   const SignInButton = () => (
     <button
       className="flex items-center gap-2 px-2 h-[70%] border-2  border-main-dark text-main-dark bg-purple-10 rounded font-bold cursor-pointer backdrop1 z-[10]"
@@ -15,7 +17,10 @@ const Navbar = () => {
     </button>
   );
   return (
-    <nav className="bg-main-light h-16 border-b border-gray-20 flex justify-between lg:px-10 md:px-6 sm:px-4 px-2 items-center">
+    <nav
+      className={`h-16 border-b border-gray-20 flex justify-between lg:px-10 md:px-6 sm:px-4 px-2 items-center z-[11]  top-0 w-full ${
+        path === "/" ? "fixed bg-transparent" : "sticky bg-main-light"
+      }`}>
       <Link
         href={"/"}
         className="relative flex flex-col items-center justify-center">

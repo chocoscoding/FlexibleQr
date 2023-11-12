@@ -5,9 +5,9 @@ import { GrAddCircle } from "react-icons/gr";
 
 const ActionButton = () => {
   const { status } = useSession();
-  const buttonStyle = `flex items-center justify-center font-semibold gap-2 backdrop2 w-full max-w-[280px] sm:max-w-[350px] lg:max-w-[450px] border-2 border-black rounded xl:h-16 lg:h-14 md:h-12 outline-none mt-10`;
+  const buttonStyle = `flex items-center justify-center font-semibold gap-2 backdrop2 w-full max-w-[450px] md:max-w-[370px] lg:max-w-[450px] border-2 border-black rounded xl:h-16 lg:h-14 h-12 outline-none mt-3 md:mt-6 self-center`;
   return (
-    <div className="mt-6">
+    <div className="md:mt-6 mt-4">
       {status === "authenticated" ? (
         <button className={buttonStyle}>
           <GrAddCircle className="w-[25px] h-[25px]" /> Create a new QR Code

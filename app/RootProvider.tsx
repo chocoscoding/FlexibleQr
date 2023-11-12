@@ -16,7 +16,7 @@ const RootProvider = ({ children, session }: { children: ReactNode; session: Ses
 
   if (!mounted) return null;
   return (
-    <div className="bg-main-light min-h-screen">
+    <div className="bg-main-light min-h-screen text-main-dark">
       <SessionProvider session={session}>
         <Navbar />
         {children}

@@ -18,6 +18,11 @@
       font-size: 6.3rem;
     }
   }
+  @media screen and (max-width: 1200px) {
+    .clamper {
+      font-size: 6.1rem;
+    }
+  }
   @media screen and (max-width: 1027px) {
     .clamper {
       font-size: 5.9rem;
@@ -40,7 +45,7 @@
   }
   @media screen and (max-width: 780px) {
     .clamper {
-      font-size: 4.35rem;
+      font-size: 4.1rem;
     }
   }
   @media screen and (max-width: 700px) {
@@ -48,21 +53,55 @@
       font-size: 4rem;
     }
   }
-  @media screen and (max-width: 556px) {
+  @media screen and (max-width: 680px) {
     .clamper {
-      /* font-size: 6.7rem; */
+      font-size: 3.8rem;
+    }
+  }
+  @media screen and (max-width: 525px) {
+    .clamper {
+      font-size: 3.65rem;
+    }
+    .mockup {
+      object-position: top !important;
+    }
+  }
+  @media screen and (max-width: 507px) {
+    .clamper {
+      font-size: 3.35rem;
+    }
+  }
+  @media screen and (max-width: 470px) {
+    .clamper {
+      font-size: 3.25rem;
     }
   }
   @media screen and (max-width: 456px) {
     .clamper {
-      /* font-size: 6.7rem; */
+      font-size: 3rem;
     }
   }
-  @media screen and (max-width: 356px) {
+  @media screen and (max-width: 425px) {
     .clamper {
-      /* font-size: 6.7rem; */
+      font-size: 2.8rem;
     }
   }
+  @media screen and (max-width: 378px) {
+    .clamper {
+      font-size: 2.6rem;
+    }
+  }
+  @media screen and (max-width: 353px) {
+    .clamper {
+      font-size: 2.4rem;
+    }
+  }
+  @media screen and (max-width: 335px) {
+    .clamper {
+      font-size: 2.3rem;
+    }
+  }
+
   .page-height {
     height: calc(100vh - 4rem);
   }
