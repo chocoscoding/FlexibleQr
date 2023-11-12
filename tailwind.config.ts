@@ -4,6 +4,12 @@ const config: Config = {
   content: ["./pages/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}", "./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      height: {
+        "page-height": "calc(100vh - 4rem)",
+      },
+      minHeight: {
+        "page-height": "calc(100vh - 4rem)",
+      },
       boxShadow: {
         "3xl": "3px 2px 0px 0px #1F1233",
         "4xl": "4px 3px 0px 0px #1F1233",

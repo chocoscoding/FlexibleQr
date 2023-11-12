@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { SessionProvider } from "next-auth/react";
 import toast from "react-hot-toast";
+import StartModal from "./components/StartModal";
 
 const RootProvider = ({ children, session }: { children: ReactNode; session: Session | null }) => {
   //to avoid hydration mismatch and clear all toasts on full page rerender
@@ -19,6 +20,7 @@ const RootProvider = ({ children, session }: { children: ReactNode; session: Ses
     <div className="bg-main-light min-h-screen text-main-dark">
       <SessionProvider session={session}>
         <Navbar />
+        <StartModal/>
         {children}
         <Footer />
       </SessionProvider>

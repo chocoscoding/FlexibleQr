@@ -3,26 +3,20 @@ import ActionButton from "./ActionButton";
 
 export default function Home() {
   return (
-    <main className="flex flex-wrap-reverse relative">
-      <section className=" md:w-1/2 md:page-height text-main-dark p-6 md:p-10 lg:p-12 w-full absolute md:relative  bg-main-light z-30 md:bg-transparent">
-        <div className=" md:absolute w-full">
-          <h1 className="md:min-w-[70vw] z-40 font-extrabold break-words clamper relative">
-            Keep the Look, <br />
-            Change the Link
-          </h1>
-          <h3 className="text-xl  md:text-2xl my-1 md:my-3">Your Content Changes, But your QR Code Stays the Same</h3>
-          <ActionButton />
-        </div>
+    <main className="flex md:flex-row flex-col md:px-14 relative min-h-page-height">
+      <section className="w-full md:w-1/2 md:relative md:h-page-height text-main-dark p-6 sm:p-8 md:p-10 lg:p-12  flex flex-col md:block items-center justify-center z-20 mt-4 md:mt-0">
+        <h1 className=" font-bold break-words clamper">Keep the Look, Change the Link</h1>
+        <h3 className=" text-xl my-3">Your Content Changes, But your QR Code Stays the Same</h3>
+        <ActionButton />
       </section>
-      <section className=" md:w-1/2 h-screen relative z-10 w-full">
+      <section className="w-full md:w-1/2 h-[500px] md:h-screen relative z-10 border border-red-400 ">
         <Image
-          src={"/Mockup.png"}
+          src={"/Mockup1.png"}
           objectFit="contain"
           fill
-          objectPosition="right"
           alt="design"
           priority={true}
-          className="mockup"
+          className="object-center md:object-right"
         />
       </section>
     </main>

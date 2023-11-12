@@ -9,43 +9,57 @@
   .backdrop2 {
     @apply hover:shadow-4xl transition-all;
   }
+  .backdrop-light {
+    @apply transition-all relative;
+  }
+  .backdrop-light::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background: transparent;
+    border: 2px solid #1f1233;
+    transition: 0.3s all ease;
+  }
+  .backdrop-light:hover::before {
+    right: -4px;
+    bottom: -5px;
+  }
   .clamper {
-    font-size: 6.7rem;
+    font-size: 4.9rem;
+    line-height: 5.6rem;
+  }
+  .clamper2 {
+    font-size: clamp(1rem, 0.9528rem + 0.2797vw, 1.25rem);
   }
 
   @media screen and (max-width: 1356px) {
     .clamper {
-      font-size: 6.3rem;
+      font-size: 4rem;
     }
   }
   @media screen and (max-width: 1200px) {
     .clamper {
-      font-size: 6.1rem;
+      font-size: 3.5rem;
     }
   }
   @media screen and (max-width: 1027px) {
     .clamper {
-      font-size: 5.9rem;
+      font-size: 3.2rem;
     }
   }
   @media screen and (max-width: 988px) {
     .clamper {
-      font-size: 5.2rem;
-    }
-  }
-  @media screen and (max-width: 868px) {
-    .clamper {
-      font-size: 5rem;
-    }
-  }
-  @media screen and (max-width: 834px) {
-    .clamper {
-      font-size: 4.7rem;
+      font-size: 3rem;
     }
   }
   @media screen and (max-width: 780px) {
     .clamper {
-      font-size: 4.1rem;
+      font-size: 4.7rem;
     }
   }
   @media screen and (max-width: 700px) {

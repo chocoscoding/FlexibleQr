@@ -4,14 +4,16 @@ import Link from "next/link";
 import { AiFillPlusCircle, AiOutlineUnorderedList } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { nameShortener } from "../helpers";
+import useNewModalState from "../hooks/useNewModalState";
 const Dropdown = () => {
   const { data } = useSession();
+  const { open } = useNewModalState();
   const dropdownIconStyle = "w-[15px] h-[15px] text-main-dark";
   const dropdownigationList = [
     {
       name: "New QR Code",
       icon: <AiFillPlusCircle className={dropdownIconStyle} />,
-      link: "/new",
+      onclick: () => open(),
     },
     {
       name: "All QR Codes",
