@@ -7,9 +7,9 @@ import useFollowersCount from "@/app/hooks/useNewModalState";
 const ActionButton = () => {
   const { status } = useSession();
   const { open } = useFollowersCount();
-  const buttonStyle = `flex items-center justify-center font-semibold gap-2 backdrop2 w-full max-w-[450px] md:max-w-[370px] lg:max-w-[450px] border-2 border-black rounded xl:h-16 lg:h-14 h-12 outline-none mt-3 md:mt-6 self-center`;
+  const buttonStyle = `flex items-center justify-center font-semibold gap-2 backdrop2 w-full max-w-[450px] md:max-w-[370px] lg:max-w-[450px] border-2 border-black rounded xl:h-16 lg:h-14 h-12 outline-none mt-3 lg:mt-6 self-center m-auto md:m-0`;
   return (
-    <div className="md:mt-0 mt-4">
+    <div className="md:mt-0 mt-2 block">
       {status === "authenticated" ? (
         <button
           className={buttonStyle}

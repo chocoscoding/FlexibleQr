@@ -18,9 +18,7 @@ const Navbar = () => {
   );
   return (
     <nav
-      className={`h-16 border-b border-gray-20 flex justify-between lg:px-10 md:px-6 sm:px-4 px-2 items-center z-[11]  top-0 w-full ${
-        path === "/" ? "fixed bg-transparent" : "sticky bg-main-light"
-      }`}>
+      className={`h-16 border-b border-gray-20 flex justify-between lg:px-10 md:px-6 sm:px-4 px-2 items-center z-[11]  top-0 w-full bg-main-light sticky`}>
       <Link
         href={"/"}
         className="relative flex flex-col items-center justify-center">
