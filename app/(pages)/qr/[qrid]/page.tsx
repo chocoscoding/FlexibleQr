@@ -6,6 +6,7 @@ import SectionControl from "./SectionControl";
 import MainInfo from "./MainInfo";
 import QrStyle from "./QrStyle";
 import Settings from "./Settings";
+import QrCode from "./QrCode";
 const Page = () => {
   const { back } = useRouter();
   return (
@@ -33,7 +34,9 @@ const Page = () => {
             <Settings />
           </div>
           {/* qr code */}
-          <div className="w-[30%] md1:w-full border border-red-500"></div>
+          <div className="w-[30%] md1:w-full">
+            <QrCode />
+          </div>
         </main>
       </section>
     </main>
