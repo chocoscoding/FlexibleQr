@@ -2,8 +2,10 @@
 import React from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { useRouter } from "next/navigation";
-import useActiveSection from "@/app/hooks/useActiveSection";
 import SectionControl from "./SectionControl";
+import MainInfo from "./MainInfo";
+import QrStyle from "./QrStyle";
+import Settings from "./Settings";
 const Page = () => {
   const { back } = useRouter();
   return (
@@ -25,7 +27,11 @@ const Page = () => {
 
         <main className="flex flex-wrap justify-between mt-8">
           {/* main */}
-          <div className="w-8/12 md1:w-full border border-blue-500"></div>
+          <div className="w-8/12 md1:w-full">
+            <MainInfo />
+            <QrStyle />
+            <Settings />
+          </div>
           {/* qr code */}
           <div className="w-[30%] md1:w-full border border-red-500"></div>
         </main>
