@@ -43,3 +43,33 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   @@unique([provider, providerAccountId])
 }
+
+model Qr {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  linkId            String  @unique
+  name              String
+  link              String
+
+  qr_size Int @default(100)
+  qr_bg String @default("rgba(1,1,1,1)")
+  qr_fg String @default("rgba(0,0,0,0)")
+
+  qr_image_url String?
+  qr_image_width Int @default(20)
+  qr_image_height Int @default(20)
+  qr_image_excavate Boolean @default(true)
+  qr_image_positioning ImagePosition @default(CENTERED)
+  qr_image_X Int @default(20)
+  qr_image_Y Int @default(20)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+
+}
+
+enum ImagePosition {
+  CENTERED
+  FLEXIBLE
+}

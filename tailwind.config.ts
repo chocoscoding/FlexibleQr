@@ -4,6 +4,19 @@ const config: Config = {
   content: ["./pages/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}", "./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      screens: {
+        sm1: { max: "480px" },
+        ba1: { max: "520px" },
+        md2: { max: "639px" },
+        md3: { max: "654px" },
+        md1: { max: "768px" },
+        lg2: { max: "951px" },
+        lg3: { max: "1000px" },
+        lg1: { max: "1024px" },
+        xl2: { max: "1203px" },
+        xl1: { max: "1285px" },
+        xxl1: { max: "1480px" },
+      },
       height: {
         "page-height": "calc(100vh - 4rem)",
       },

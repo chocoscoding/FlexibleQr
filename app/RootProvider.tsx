@@ -4,7 +4,7 @@ import { ReactNode, useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { SessionProvider } from "next-auth/react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import StartModal from "./components/StartModal";
 
 const RootProvider = ({ children, session }: { children: ReactNode; session: Session | null }) => {
@@ -18,12 +18,15 @@ const RootProvider = ({ children, session }: { children: ReactNode; session: Ses
   if (!mounted) return null;
   return (
     <div className="bg-main-light min-h-screen text-main-dark">
-      <SessionProvider session={session}>
-        <Navbar />
-        <StartModal/>
-        {children}
-        <Footer />
-      </SessionProvider>
+      <div className="w-full max-w-[1500px] m-auto">
+        <SessionProvider session={session}>
+          <Toaster />
+          <Navbar />
+          <StartModal />
+          {children}
+          <Footer />
+        </SessionProvider>
+      </div>
     </div>
   );
 };
