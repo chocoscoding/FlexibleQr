@@ -15,7 +15,7 @@ interface QrInfoType {
     height: number;
     width: number;
     position: Qr["qr_image_positioning"];
-    excavate: 'YES'| 'NO';
+    excavate: "YES" | "NO";
   };
   mainInfo: {
     name: string;
@@ -33,7 +33,7 @@ interface QrInfoType {
   qr_image_src: (qr_image_src: string) => void;
   qr_image_width: (qr_image_width: number) => void;
   qr_image_height: (qr_image_height: number) => void;
-  qr_image_excavate: (qr_image_excavate: 'YES'|'NO') => void;
+  qr_image_excavate: (qr_image_excavate: "YES" | "NO") => void;
   qr_image_positioning: (qr_image_positioning: Qr["qr_image_positioning"]) => void;
   qr_image_X: (qr_image_X: number) => void;
   qr_image_Y: (qr_image_Y: number) => void;
@@ -48,22 +48,26 @@ const useQrInfo = create<QrInfoType>((set) => ({
     size: 260,
     bgColor: "#ffffff",
     fgColor: "#000000",
-},
-qr_imageSettings: {
+  },
+  qr_imageSettings: {
     src: "https://static.zpao.com/favicon.png",
-      position: "CENTERED",
+    position: "CENTERED",
     x: undefined,
     y: undefined,
     height: 24,
     width: 24,
-    excavate: 'NO',
+    excavate: "NO",
   },
 
   init: (data) => set((state) => ({ qr: data.qr, mainInfo: data.mainInfo })),
   name: (name) => set((state) => ({ mainInfo: { ...state.mainInfo, name } })),
   link: (link) => set((state) => ({ mainInfo: { ...state.mainInfo, link } })),
 
-  qr_size: (size) => set((state) => ({ qr: { ...state.qr, size } })),
+  qr_size: (size) =>
+    set((state) => {
+      if (size > 306) return { qr: { ...state.qr, size: 306 } };
+      return { qr: { ...state.qr, size } };
+    }),
   qr_bg: (bgColor) => set((state) => ({ qr: { ...state.qr, bgColor } })),
   qr_fg: (fgColor) => set((state) => ({ qr: { ...state.qr, fgColor } })),
 

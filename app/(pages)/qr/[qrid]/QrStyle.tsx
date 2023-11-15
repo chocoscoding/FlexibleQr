@@ -26,7 +26,7 @@ const QrStyle = () => {
   return (
     <div className="border-2 border-main-dark rounded p-4 bg-white">
       <form>
-        <div className="w-[calc(50%-1rem)]">
+        <div className="w-[calc(50%-1rem)] md1:w-full ">
           <InputField
             name="Size"
             placeholder="QR size"
@@ -36,7 +36,7 @@ const QrStyle = () => {
             onChange={qr_size}
           />
         </div>
-        <div className="w-full flex gap-8">
+        <div className="w-full flex gap-8 md1:flex-col md1:gap-3">
           <InputField
             name="Foreground"
             placeholder="https://example.com"
@@ -61,7 +61,7 @@ const QrStyle = () => {
           <p className="font-bold text-xl">Image Settings</p>
         </section>
 
-        <div className="w-[calc(50%-1rem)]">
+        <div className="w-[calc(50%-1rem)] md1:w-full">
           <InputField
             name="Image url"
             placeholder="Image url for QR code"
@@ -71,7 +71,7 @@ const QrStyle = () => {
             onChange={qr_image_src}
           />
         </div>
-        <div className="w-full flex gap-8">
+        <div className="w-full flex gap-8 md1:flex-col md1:gap-3">
           <InputField
             name="Width"
             placeholder=""
@@ -89,7 +89,7 @@ const QrStyle = () => {
             onChange={qr_image_height}
           />
         </div>
-        <div className="w-full flex gap-8">
+        <div className="w-full flex gap-8 md1:flex-col md1:gap-3">
           <OptionField
             name="Image position"
             id="imageposition"
@@ -105,7 +105,7 @@ const QrStyle = () => {
             onChange={qr_image_excavate}
           />
         </div>
-        <div className="w-full flex gap-8">
+        <div className="w-full flex gap-8 md1:flex-col md1:gap-3">
           <RangeField
             name="Image X"
             placeholder=""

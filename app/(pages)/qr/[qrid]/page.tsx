@@ -23,7 +23,7 @@ const Page = () => {
         </p>
       </section>
 
-      <section className="ml-16 md1:ml-0">
+      <section className="ml-16 lg3:ml-0">
         <SectionControl />
 
         <main className="flex flex-wrap justify-between mt-8">
