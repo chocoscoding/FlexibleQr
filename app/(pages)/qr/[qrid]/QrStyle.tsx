@@ -3,8 +3,24 @@ import React from "react";
 import InputField from "@/app/components/InputField";
 import useActiveSection from "@/app/hooks/useActiveSection";
 import OptionField from "@/app/components/OptionField";
+import RangeField from "@/app/components/RangeField";
+import useQrInfo from "@/app/hooks/useQrInfo";
 const QrStyle = () => {
   const { activeSection } = useActiveSection();
+  const {
+    qr,
+    qr_size,
+    qr_imageSettings,
+    qr_image_positioning,
+    qr_image_excavate,
+    qr_image_X,
+    qr_image_Y,
+    qr_fg,
+    qr_bg,
+    qr_image_src,
+    qr_image_width,
+    qr_image_height,
+  } = useQrInfo();
   if (activeSection !== 2) return null;
 
   return (
@@ -16,6 +32,8 @@ const QrStyle = () => {
             placeholder="QR size"
             inputType="number"
             id="size"
+            value={qr.size}
+            onChange={qr_size}
           />
         </div>
         <div className="w-full flex gap-8">
@@ -24,12 +42,16 @@ const QrStyle = () => {
             placeholder="https://example.com"
             inputType="color"
             id="foreground"
+            value={qr.fgColor}
+            onChange={qr_fg}
           />
           <InputField
             name="Background"
             placeholder="https://example.com"
             inputType="color"
             id="background"
+            value={qr.bgColor}
+            onChange={qr_bg}
           />
         </div>
 
@@ -45,6 +67,8 @@ const QrStyle = () => {
             placeholder="Image url for QR code"
             inputType="string"
             id="imageurl"
+            value={qr_imageSettings.src}
+            onChange={qr_image_src}
           />
         </div>
         <div className="w-full flex gap-8">
@@ -53,12 +77,16 @@ const QrStyle = () => {
             placeholder=""
             inputType="number"
             id="imagewidth"
+            value={qr_imageSettings.width}
+            onChange={qr_image_width}
           />
           <InputField
             name="Height"
             placeholder=""
             inputType="number"
             id="imageheight"
+            value={qr_imageSettings.height}
+            onChange={qr_image_height}
           />
         </div>
         <div className="w-full flex gap-8">
@@ -66,25 +94,35 @@ const QrStyle = () => {
             name="Image position"
             id="imageposition"
             options={["CENTERED", "FLEXIBLE"]}
+            value={qr_imageSettings.position}
+            onChange={qr_image_positioning}
           />
           <OptionField
             name="Excavate Image"
             id="excavateimage"
             options={["YES", "NO"]}
+            value={qr_imageSettings.excavate}
+            onChange={qr_image_excavate}
           />
         </div>
         <div className="w-full flex gap-8">
-          <InputField
+          <RangeField
             name="Image X"
             placeholder=""
-            inputType="number"
             id="imageX"
+            min={0}
+            max={qr.size - qr_imageSettings.width}
+            value={qr_imageSettings.x || 0}
+            onchange={qr_image_X}
           />
-          <InputField
+          <RangeField
             name="Image Y"
             placeholder=""
-            inputType="number"
+            value={qr_imageSettings.y || 0}
+            onchange={qr_image_Y}
             id="imageY"
+            min={0}
+            max={qr.size - qr_imageSettings.height}
           />
         </div>
       </form>

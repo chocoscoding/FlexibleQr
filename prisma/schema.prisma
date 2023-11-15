@@ -55,7 +55,7 @@ model Qr {
   qr_bg String @default("rgba(1,1,1,1)")
   qr_fg String @default("rgba(0,0,0,0)")
 
-  qr_image_url String?
+  qr_image_url String @default("")
   qr_image_width Int @default(20)
   qr_image_height Int @default(20)
   qr_image_excavate Boolean @default(true)

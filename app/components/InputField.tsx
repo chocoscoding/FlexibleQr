@@ -5,8 +5,10 @@ interface InputFieldType {
   inputType: HTMLInputElement["type"];
   id: string;
   disabled?: boolean;
+  onChange: (e: any) => void;
+  value: string | number;
 }
-const InputField: FC<InputFieldType> = ({ name, placeholder, inputType, id, disabled }) => {
+const InputField: FC<InputFieldType> = ({ name, placeholder, inputType, id, disabled, value, onChange }) => {
   return (
     <div
       className={`border-b border-main-dark h-[3.7rem] mb-5 flex flex-col justify-between w-full ${
@@ -23,6 +25,8 @@ const InputField: FC<InputFieldType> = ({ name, placeholder, inputType, id, disa
         className={`mb-2 outline-none border-none font-semibold placeholder-shown:font-normal ${disabled ? " cursor-not-allowed" : ""}`}
         type={inputType}
         id={id}
+        onChange={(e) => onChange(e.target.value)}
+        value={value}
       />
     </div>
   );

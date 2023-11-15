@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { QRCodeCanvas } from "qrcode.react";
+import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 import useQrInfo from "@/app/hooks/useQrInfo";
 
 const QrCode = () => {
-  const { qr, mainInfo } = useQrInfo();
+  const { qr_imageSettings, qr, mainInfo } = useQrInfo();
   const [url, setUrl] = useState("ssss");
 
   const downloadQRCode = (e: any) => {
@@ -15,14 +15,23 @@ const QrCode = () => {
     setUrl(e.target.value);
   };
 
+  let v = {
+    src: qr_imageSettings.src,
+    x: qr_imageSettings.x,
+    y: qr_imageSettings.y,
+    height: qr_imageSettings.height,
+    width: qr_imageSettings.width,
+    excavate: qr_imageSettings.excavate === "NO" ? false : true  };
   const qrcode = (
-    <QRCodeCanvas
+    <QRCodeSVG
+      includeMargin
       id="qrCode"
       value={mainInfo.link}
+      level={"H"}
       size={qr.size}
       bgColor={qr.bgColor}
       fgColor={qr.fgColor}
-      level={"H"}
+      imageSettings={v}
     />
   );
   return (
