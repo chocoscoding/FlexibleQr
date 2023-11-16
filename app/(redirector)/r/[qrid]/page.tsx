@@ -1,8 +1,7 @@
 import getUserQrById from "@/app/actions/getOneQrById";
-import { notFound,redirect } from "next/navigation";
+import { notFound, redirect, permanentRedirect } from "next/navigation";
 
 //TODO: add metadata for name and vary if it affects the speed of redirect or even helps in any way
-
 
 //redirection page
 const page = async ({ params }: { params: { qrid: string } }) => {
@@ -11,7 +10,7 @@ const page = async ({ params }: { params: { qrid: string } }) => {
   if (!oneqr || !oneqr.link) {
     notFound();
   }
-  redirect(oneqr.link)
+  permanentRedirect(oneqr.link);
 };
 
 export default page;
