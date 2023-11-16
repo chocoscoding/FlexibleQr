@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import useActiveSection from "@/app/hooks/useActiveSection";
 import InputField from "@/app/components/InputField";
@@ -8,6 +8,9 @@ const MainInfo = () => {
   const { activeSection } = useActiveSection();
   const { mainInfo, mainInfoOld, updateOld, name, link } = useQrInfo();
 
+  //to show cancel button
+  const showCancel = JSON.stringify(mainInfo) === JSON.stringify(mainInfoOld);
+  console.log(showCancel);
   if (activeSection !== 1) return null;
 
   return (
@@ -27,11 +30,15 @@ const MainInfo = () => {
           inputType="text"
           id="url"
           onChange={link}
-          value={mainInfo.link}
+          value={mainInfo.link || ""}
         />
 
         <div className="flex gap-4 justify-end">
-          <button className="bg-white border border-main-dark rounded  min-w-[150px] max-w-[200px] h-[55px] hover:border-2">Cancle</button>
+          {showCancel ? null : (
+            <button className="bg-white border border-main-dark rounded  min-w-[150px] max-w-[200px] h-[55px] hover:border-2">
+              Cancel
+            </button>
+          )}
           <button className=" bg-main-light border border-main-dark rounded min-w-[150px] max-w-[200px] h-[55px] hover:border-2">
             Submit
           </button>

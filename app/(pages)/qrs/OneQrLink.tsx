@@ -2,12 +2,13 @@
 import Link from "next/link";
 import React, { FC } from "react";
 import QrStatus from "./QrStatus";
+import { formattedDate } from "@/app/helpers";
 
 interface OneQrLinkType {
   link: string;
   name: string;
   status: string;
-  createdAt: string;
+  createdAt: Date | string;
 }
 const OneQrLink: FC<OneQrLinkType> = ({ link, name, status, createdAt }) => {
   return (
@@ -17,11 +18,11 @@ const OneQrLink: FC<OneQrLinkType> = ({ link, name, status, createdAt }) => {
       <div className="flex-[8] md:pl-8 md:pr-3 font-semibold text-sm md1:-order-1 md1:flex-[1_0_100%] flex items-center">
         <p className="w-full max-h-9 break-all text-truncate md1:w-[75%] ba1:h-4 ba1:!w-full">{name}</p>
       </div>
-      <p className="flex flex-[2] ba1:flex-[1] text-center text-sm flex-shrink-0 justify-center md1:justify-end">
+      <div className="flex flex-[2] ba1:flex-[1] text-center text-sm flex-shrink-0 justify-center md1:justify-end">
         <QrStatus />
-      </p>
+      </div>
       <p className="flex-[2] ba1:flex-[1] text-center font-normal text-sm flex-shrink-0 md1:flex-[1_0_0%] md1:-order-1 md1:flex md1:justify-start">
-        {createdAt}
+        {formattedDate(createdAt)}
       </p>
     </Link>
   );

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 
@@ -75,6 +75,7 @@ const QrStyle = () => {
         </div>
         <div className="w-full flex gap-8 md1:flex-col md1:gap-3">
           <InputField
+            disabled={!qr_imageSettings.src}
             name="Width"
             placeholder=""
             inputType="number"
@@ -83,6 +84,7 @@ const QrStyle = () => {
             onChange={qr_image_width}
           />
           <InputField
+            disabled={!qr_imageSettings.src}
             name="Height"
             placeholder=""
             inputType="number"
@@ -93,6 +95,7 @@ const QrStyle = () => {
         </div>
         <div className="w-full flex gap-8 md1:flex-col md1:gap-3">
           <OptionField
+            disabled={!qr_imageSettings.src}
             name="Image position"
             id="imageposition"
             options={["CENTERED", "FLEXIBLE"]}
@@ -100,6 +103,7 @@ const QrStyle = () => {
             onChange={qr_image_positioning}
           />
           <OptionField
+            disabled={!qr_imageSettings.src}
             name="Excavate Image"
             id="excavateimage"
             options={["YES", "NO"]}
@@ -109,6 +113,7 @@ const QrStyle = () => {
         </div>
         <div className="w-full flex gap-8 md1:flex-col md1:gap-3">
           <RangeField
+            disabled={qr_imageSettings.position === "CENTERED" || !qr_imageSettings.src}
             name="Image X"
             placeholder=""
             id="imageX"
@@ -118,6 +123,7 @@ const QrStyle = () => {
             onchange={qr_image_X}
           />
           <RangeField
+            disabled={qr_imageSettings.position === "CENTERED" || !qr_imageSettings.src}
             name="Image Y"
             placeholder=""
             value={qr_imageSettings.y || 0}

@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 const StartModal = () => {
-  const { push } = useRouter();
+  const { push, refresh } = useRouter();
   const { isOpen, close, open } = useFollowersCount();
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
@@ -27,8 +27,10 @@ const StartModal = () => {
         body: JSON.stringify({ name }),
       });
       const data = await apicall.json();
-      close();
       push("/qr/" + data.linkId);
+      refresh();
+      close();
+      setName("")
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong,try again");

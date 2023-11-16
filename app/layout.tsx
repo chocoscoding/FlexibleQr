@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../pages/api/auth/[...nextauth]";
 import RootProvider from "./RootProvider";
 import NextTopLoader from "nextjs-toploader";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "QR Forever",

@@ -19,11 +19,11 @@ interface QrInfoType {
   };
   mainInfo: {
     name: string;
-    link: string;
+    link: string | null;
   };
   mainInfoOld: {
     name: string;
-    link: string;
+    link: string | null;
   };
 
   init: (data: { qr: QrInfoType["qr"]; mainInfo: QrInfoType["mainInfo"] }) => void;
@@ -40,8 +40,8 @@ interface QrInfoType {
   qr_image_height: (qr_image_height: number) => void;
   qr_image_excavate: (qr_image_excavate: "YES" | "NO") => void;
   qr_image_positioning: (qr_image_positioning: Qr["qr_image_positioning"]) => void;
-  qr_image_X: (qr_image_X: number) => void;
-  qr_image_Y: (qr_image_Y: number) => void;
+  qr_image_X: (qr_image_X?: number) => void;
+  qr_image_Y: (qr_image_Y?: number) => void;
 }
 
 const useQrInfo = create<QrInfoType>((set) => ({
@@ -68,8 +68,12 @@ const useQrInfo = create<QrInfoType>((set) => ({
     excavate: "NO",
   },
 
-  init: (data) => set((state) => ({ qr: data.qr, mainInfo: data.mainInfo })),
-  name: (name) => set((state) => ({ mainInfo: { ...state.mainInfo, name } })),
+  init: (data) => set((state) => data),
+  name: (name) =>
+    set((state) => {
+      if (name.length > 70) return { mainInfo: { ...state.mainInfo, name: name.slice(0, 70) } };
+      return { mainInfo: { ...state.mainInfo, name } };
+    }),
   link: (link) => set((state) => ({ mainInfo: { ...state.mainInfo, link } })),
   updateOld: (newData) => set((state) => ({ mainInfoOld: newData })),
 

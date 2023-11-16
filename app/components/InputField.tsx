@@ -26,7 +26,7 @@ const InputField: FC<InputFieldType> = ({ name, placeholder, inputType, id, disa
         type={inputType}
         id={id}
         onChange={(e) => onChange(e.target.value)}
-        value={value}
+        value={value || ""}
       />
     </div>
   );

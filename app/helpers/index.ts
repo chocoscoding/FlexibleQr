@@ -11,3 +11,12 @@ export const nameShortener = (name?: string | null | undefined) => {
   }
   return name;
 };
+
+//format date
+
+export const formattedDate = (date: Date | string) => {
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const dateObject = new Date(date);
+
+  return `${dateObject.getDate()} ${months[dateObject.getMonth()]} ${dateObject.getFullYear()}`;
+};

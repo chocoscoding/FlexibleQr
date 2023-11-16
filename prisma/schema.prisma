@@ -48,17 +48,17 @@ model Qr {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
   userId            String  @db.ObjectId
   linkId            String  @unique
-  name              String
-  link              String?
+  name              String 
+  link              String? @default("")
 
-  qr_size Int @default(100)
-  qr_bg String @default("rgba(1,1,1,1)")
-  qr_fg String @default("rgba(0,0,0,0)")
+  qr_size Int @default(280)
+  qr_bg String @default("#ffffff")
+  qr_fg String @default("#000000")
 
   qr_image_url String @default("")
   qr_image_width Int @default(20)
   qr_image_height Int @default(20)
-  qr_image_excavate Boolean @default(true)
+  qr_image_excavate Excavate @default(YES)
   qr_image_positioning ImagePosition @default(CENTERED)
   qr_image_X Int @default(20)
   qr_image_Y Int @default(20)
@@ -72,4 +72,8 @@ model Qr {
 enum ImagePosition {
   CENTERED
   FLEXIBLE
+}
+enum Excavate {
+  YES
+  NO
 }
