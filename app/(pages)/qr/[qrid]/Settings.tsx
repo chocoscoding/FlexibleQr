@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import useActiveSection from "@/app/hooks/useActiveSection";
 import InputField from "@/app/components/InputField";

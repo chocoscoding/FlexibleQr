@@ -1,3 +1,4 @@
+'use client'
 import useActiveSection from "@/app/hooks/useActiveSection";
 import React from "react";
 

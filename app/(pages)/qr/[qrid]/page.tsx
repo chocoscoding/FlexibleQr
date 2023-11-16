@@ -1,29 +1,24 @@
-"use client";
-import React from "react";
-import { IoIosArrowBack } from "react-icons/io";
-import { useParams, useRouter } from "next/navigation";
 import SectionControl from "./SectionControl";
 import MainInfo from "./MainInfo";
 import QrStyle from "./QrStyle";
 import Settings from "./Settings";
 import QrCode from "./QrCode";
-const Page = () => {
-  const params = useParams();
-  const { back } = useRouter();
+import TopNav from "./TopNav";
+const Page = async ({ params }: { params: { qrid: string } }) => {
+  function waitForTenSeconds() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.log("10 seconds have passed.");
+        resolve("Done"); // You can resolve with any value you want
+      }, 10000); // 10000 milliseconds = 10 seconds
+    });
+  }
+
+  // await waitForTenSeconds();
   return (
     <main className="w-full min-h-page-height m-auto px-10 lg1:px-7 md1:!px-2">
       {/* top nav */}
-      <section className="my-4 flex w-full items-center h-10">
-        <button
-          className="border border-main-dark rounded-sm p-1 flex-shrink-0 h-10 w-10 md1:h-8 md1:w-8 backdrop1 outline-none mr-6 flex justify-center items-center"
-          onClick={back}>
-          <IoIosArrowBack />
-        </button>
-        <p className="truncate mr-3 text-[clamp(1rem,0.9471rem_+_0.2824vw,1.3rem)] font-semibold ">
-          012345678901234567890123456789012345678901234567890123456789
-        </p>
-      </section>
-
+      <TopNav name={`012345678901234567890123456789012345678901234567890123456789`} />
       <section className="ml-16 lg3:ml-0">
         <SectionControl />
 

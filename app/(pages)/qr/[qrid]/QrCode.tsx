@@ -1,8 +1,9 @@
+"use client";
 import { useState } from "react";
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 import useQrInfo from "@/app/hooks/useQrInfo";
 
-const QrCode = ({id}: {id:string}) => {
+const QrCode = ({ id }: { id: string }) => {
   const { qr_imageSettings, qr, mainInfo } = useQrInfo();
   const [url, setUrl] = useState("ssss");
 
