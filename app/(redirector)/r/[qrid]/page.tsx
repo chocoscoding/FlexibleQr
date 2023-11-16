@@ -10,7 +10,9 @@ const page = async ({ params }: { params: { qrid: string } }) => {
   if (!oneqr || !oneqr.link) {
     notFound();
   }
-  redirect(oneqr.link);
+  // redirect(oneqr.link);
+
+  return <div>{JSON.stringify(oneqr)}</div>;
 };
 
 export default page;
