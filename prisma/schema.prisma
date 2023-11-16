@@ -49,7 +49,7 @@ model Qr {
   userId            String  @db.ObjectId
   linkId            String  @unique
   name              String
-  link              String
+  link              String?
 
   qr_size Int @default(100)
   qr_bg String @default("rgba(1,1,1,1)")

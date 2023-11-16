@@ -21,11 +21,16 @@ interface QrInfoType {
     name: string;
     link: string;
   };
+  mainInfoOld: {
+    name: string;
+    link: string;
+  };
 
   init: (data: { qr: QrInfoType["qr"]; mainInfo: QrInfoType["mainInfo"] }) => void;
 
   name: (name: string) => void;
   link: (link: string) => void;
+  updateOld: (newData: { name: string; link: string }) => void;
 
   qr_size: (qr_size: number) => void;
   qr_bg: (qr_bg: string) => void;
@@ -41,6 +46,10 @@ interface QrInfoType {
 
 const useQrInfo = create<QrInfoType>((set) => ({
   mainInfo: {
+    name: "string",
+    link: "https://flexibleqr.codes",
+  },
+  mainInfoOld: {
     name: "string",
     link: "https://flexibleqr.codes",
   },
@@ -62,6 +71,7 @@ const useQrInfo = create<QrInfoType>((set) => ({
   init: (data) => set((state) => ({ qr: data.qr, mainInfo: data.mainInfo })),
   name: (name) => set((state) => ({ mainInfo: { ...state.mainInfo, name } })),
   link: (link) => set((state) => ({ mainInfo: { ...state.mainInfo, link } })),
+  updateOld: (newData) => set((state) => ({ mainInfoOld: newData })),
 
   qr_size: (size) =>
     set((state) => {

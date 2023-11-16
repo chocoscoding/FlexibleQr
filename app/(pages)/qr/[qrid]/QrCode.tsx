@@ -2,7 +2,7 @@ import { useState } from "react";
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 import useQrInfo from "@/app/hooks/useQrInfo";
 
-const QrCode = () => {
+const QrCode = ({id}: {id:string}) => {
   const { qr_imageSettings, qr, mainInfo } = useQrInfo();
   const [url, setUrl] = useState("ssss");
 
@@ -26,8 +26,8 @@ const QrCode = () => {
   const qrcode = (
     <QRCodeSVG
       id="qrCode"
-      value={mainInfo.link}
-      level={"H"}
+      value={`https://flexibleqr.codes/${id}`}
+      level={"M"}
       size={qr.size}
       bgColor={qr.bgColor}
       fgColor={qr.fgColor}
@@ -35,14 +35,14 @@ const QrCode = () => {
     />
   );
   return (
-    <main className="w-full overflow-hidden flex flex-col items-center gap-6 pb-4">
+    <main className="w-full overflow-hidden flex flex-col items-center gap-6 pb-4 md1:mt-4">
       <div className="w-full overflow-hidden">
-        <div className="p-4 border-2 border-main-dark rounded-md m-auto w-fit max-w-[350px] min-w-[300px] aspect-square flex items-center justify-center overflow-hidden">
+        <div className="p-4 border-2 border-main-dark rounded-md m-auto w-fit md:w-full lg:max-w-[350px]  aspect-square flex items-center justify-center overflow-hidden">
           {qrcode}
         </div>
       </div>
 
-      <button className="bg-purple-10 text-main-dark w-[300px] h-14 m-auto font-bold backdrop2 rounded-md border border-main-dark">
+      <button className="bg-purple-10 text-main-dark w-full max-w-[350px] md1:max-w-[300px] h-14 m-auto font-bold backdrop2 rounded-md border border-main-dark">
         Download QR Code
       </button>
     </main>

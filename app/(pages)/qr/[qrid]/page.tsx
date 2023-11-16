@@ -1,13 +1,14 @@
 "use client";
 import React from "react";
 import { IoIosArrowBack } from "react-icons/io";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import SectionControl from "./SectionControl";
 import MainInfo from "./MainInfo";
 import QrStyle from "./QrStyle";
 import Settings from "./Settings";
 import QrCode from "./QrCode";
 const Page = () => {
+  const params = useParams();
   const { back } = useRouter();
   return (
     <main className="w-full min-h-page-height m-auto px-10 lg1:px-7 md1:!px-2">
@@ -19,7 +20,7 @@ const Page = () => {
           <IoIosArrowBack />
         </button>
         <p className="truncate mr-3 text-[clamp(1rem,0.9471rem_+_0.2824vw,1.3rem)] font-semibold ">
-          NameedaaNameedaaNameedaaNameedaaNameedaaNameedaaNameedaaNameedaaNameedaaNameedaa
+          012345678901234567890123456789012345678901234567890123456789
         </p>
       </section>
 
@@ -35,7 +36,7 @@ const Page = () => {
           </div>
           {/* qr code */}
           <div className="w-[30%] md1:w-full">
-            <QrCode />
+            <QrCode id={(params?.qrid as string) || " "} />
           </div>
         </main>
       </section>

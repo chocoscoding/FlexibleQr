@@ -2,7 +2,7 @@ import useActiveSection from "@/app/hooks/useActiveSection";
 import React from "react";
 
 const SectionControl = () => {
-  const sectionButton = `rounded-sm text-center px-3 py-2 ba1:px-2 ba1:py-1 text-[clamp(clamp(0.7rem,0.625rem_+_0.4vw,1rem))] flex-shrink-0 outline-none`;
+  const sectionButton = `rounded text-center px-3 py-2 ba1:px-2 ba1:py-1 text-[clamp(clamp(0.7rem,0.625rem_+_0.4vw,1rem))] flex-shrink-0 outline-none`;
   const { activeSection, setSection } = useActiveSection();
 
   return (

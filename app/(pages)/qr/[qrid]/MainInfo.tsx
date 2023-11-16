@@ -1,9 +1,12 @@
 import React from "react";
 import useActiveSection from "@/app/hooks/useActiveSection";
 import InputField from "@/app/components/InputField";
+import useQrInfo from "@/app/hooks/useQrInfo";
 
 const MainInfo = () => {
   const { activeSection } = useActiveSection();
+  const { mainInfo, mainInfoOld, updateOld, name, link } = useQrInfo();
+
   if (activeSection !== 1) return null;
 
   return (
@@ -14,12 +17,16 @@ const MainInfo = () => {
           placeholder="QR code name"
           inputType="text"
           id="qrname"
+          onChange={name}
+          value={mainInfo.name}
         />
         <InputField
           name="Url"
           placeholder="https://example.com"
           inputType="text"
           id="url"
+          onChange={link}
+          value={mainInfo.link}
         />
 
         <div className="flex gap-4 justify-end">
