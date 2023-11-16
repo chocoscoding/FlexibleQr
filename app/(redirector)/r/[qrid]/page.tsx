@@ -7,9 +7,9 @@ import { notFound, redirect } from "next/navigation";
 const page = async ({ params }: { params: { qrid: string } }) => {
   const oneqr = await getUserQrById(params.qrid);
 
-  if (!oneqr || !oneqr.link) {
-    notFound();
-  }
+  // if (!oneqr || !oneqr.link) {
+  //   notFound();
+  // }
   // redirect(oneqr.link);
 
   return <div>{JSON.stringify(oneqr)}</div>;
