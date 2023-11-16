@@ -32,6 +32,7 @@ const Client: FC<Qr> = (props) => {
   const { init, mainInfo, qr_imageSettings, qr_image_X: qr_image_X_func, qr_image_Y: qr_image_Y_func } = useQrInfo();
   useEffect(() => {
     const data = {
+      id,
       qr: {
         size: qr_size,
         bgColor: qr_bg,
@@ -77,7 +78,7 @@ const Client: FC<Qr> = (props) => {
           <div className="w-8/12 md1:w-full">
             <MainInfo />
             <QrStyle />
-            <Settings id={id}/>
+            <Settings/>
           </div>
           {/* qr code */}
           <div className="w-[30%] md1:w-full">

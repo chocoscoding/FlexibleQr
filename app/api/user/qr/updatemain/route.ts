@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
 import { nanoid } from "nanoid";
 
-export async function POST(request: Request) {
+export async function PUT(request: Request) {
   const { link, name, id } = await request.json();
   const session = await getServerSession(authOptions);
   const userId = session?.user.id;

@@ -3,6 +3,7 @@ import { stat } from "fs";
 import { create } from "zustand";
 
 interface QrInfoType {
+  id: string;
   qr: {
     size: number;
     bgColor: string;
@@ -30,7 +31,7 @@ interface QrInfoType {
 
   name: (name: string) => void;
   link: (link: string) => void;
-  updateOld: (newData: { name: string; link: string }) => void;
+  updateOld: (newData: { name: string; link: string | null }) => void;
 
   qr_size: (qr_size: number) => void;
   qr_bg: (qr_bg: string) => void;
@@ -45,6 +46,7 @@ interface QrInfoType {
 }
 
 const useQrInfo = create<QrInfoType>((set) => ({
+  id: "",
   mainInfo: {
     name: "string",
     link: "https://flexibleqr.codes",

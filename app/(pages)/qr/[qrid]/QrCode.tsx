@@ -27,7 +27,7 @@ const QrCode = ({ id }: { id: string }) => {
   const qrcode = (
     <QRCodeSVG
       id="qrCode"
-      value={`https://flexibleqr.codes/${id}`}
+      value={`https://flexibleqr.codes/r/${id}`}
       level={"M"}
       size={qr.size}
       bgColor={qr.bgColor}

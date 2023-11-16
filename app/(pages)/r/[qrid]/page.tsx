@@ -1,9 +1,17 @@
-import React from 'react'
+import getUserQrById from "@/app/actions/getOneQrById";
+import { notFound,redirect } from "next/navigation";
 
-const page = () => {
-  return (
-    <div>with qr id when scanned</div>
-  )
-}
+//TODO: add metadata for name and vary if it affects the speed of redirect or even helps in any way
 
-export default page
+
+//redirection page
+const page = async ({ params }: { params: { qrid: string } }) => {
+  const oneqr = await getUserQrById(params.qrid);
+
+  if (!oneqr || !oneqr.link) {
+    notFound();
+  }
+  redirect(oneqr.link)
+};
+
+export default page;

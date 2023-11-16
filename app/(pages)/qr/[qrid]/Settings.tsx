@@ -6,9 +6,9 @@ import InputField from "@/app/components/InputField";
 import useQrInfo from "@/app/hooks/useQrInfo";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-const Settings: FC<{ id: string }> = ({ id }) => {
+const Settings = () => {
   const { activeSection } = useActiveSection();
-  const { mainInfo } = useQrInfo();
+  const { mainInfo,id } = useQrInfo();
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const { push, refresh } = useRouter();
