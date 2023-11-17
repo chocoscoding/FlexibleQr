@@ -1,5 +1,5 @@
 {
-  "name": "qrforever",
+  "name": "flexibleqr",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -21,6 +21,8 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "react-loading-skeleton": "^3.3.1",
+    "save-svg-as-png": "^1.4.17",
+    "svg-crowbar": "^0.7.0",
     "zustand": "^4.4.6"
   },
   "devDependencies": {

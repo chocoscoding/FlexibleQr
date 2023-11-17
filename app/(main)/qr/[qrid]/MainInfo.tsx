@@ -1,31 +1,37 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import useActiveSection from "@/app/hooks/useActiveSection";
 import InputField from "@/app/components/InputField";
-import useQrInfo from "@/app/hooks/useQrInfo";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { QrContext } from "./Provider";
 
 const MainInfo = () => {
+  const { mainInfo, oldMainInfo, updateOldMainInfo, name, link, id, resetMain } = useContext(QrContext)!;
+
   const { activeSection } = useActiveSection();
-  const { mainInfo, mainInfoOld, updateOld, name, link, id } = useQrInfo();
   const [loading, setLoading] = useState(false);
   const { refresh } = useRouter();
 
   //run the UPDATE request
-  const submit = async () => {
+  const submit = async (e: any) => {
+    e.preventDefault();
     toast.dismiss();
     setLoading(true);
     toast.loading("loading");
     try {
-      const apicall = await fetch("/api/user/qr/updatemain", {
+      if (mainInfo.name.length < 1) {
+        toast.error("Name can't be empty");
+        return;
+      }
+      const d = await fetch("/api/user/qr/updatemain", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ id, name: mainInfo.name, link: mainInfo.link }),
       });
-      updateOld({ name: mainInfo.name, link: mainInfo.link });
+      updateOldMainInfo();
       refresh();
     } catch (error) {
       console.log(error);
@@ -41,7 +47,7 @@ const MainInfo = () => {
   };
 
   //to show cancel button
-  const showCancel = JSON.stringify(mainInfo) === JSON.stringify(mainInfoOld);
+  const showCancel = JSON.stringify(mainInfo) === JSON.stringify(oldMainInfo);
   if (activeSection !== 1) return null;
 
   return (
@@ -56,7 +62,7 @@ const MainInfo = () => {
           value={mainInfo.name}
         />
         <InputField
-          name="Url"
+          name="Url (Must start with https://)"
           placeholder="https://example.com"
           inputType="text"
           id="url"
@@ -66,7 +72,10 @@ const MainInfo = () => {
 
         <div className="flex gap-4 justify-end">
           {showCancel ? null : (
-            <button className="bg-white border border-main-dark rounded  min-w-[150px] max-w-[200px] h-[55px] hover:border-2">
+            <button
+              onClick={resetMain}
+              type="button"
+              className="bg-white border border-main-dark rounded  min-w-[150px] max-w-[200px] h-[55px] hover:border-2">
               Cancel
             </button>
           )}

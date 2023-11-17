@@ -5,9 +5,11 @@ import { AiFillPlusCircle, AiOutlineUnorderedList } from "react-icons/ai";
 import { FiLogOut } from "react-icons/fi";
 import { nameShortener } from "../helpers";
 import useNewModalState from "../hooks/useNewModalState";
+import { useEffect, useRef } from "react";
 const Dropdown = () => {
   const { data } = useSession();
-  const { open } = useNewModalState();
+  const { open,isOpen,close } = useNewModalState();
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownIconStyle = "w-[15px] h-[15px] text-main-dark";
   const dropdownigationList = [
     {
@@ -39,7 +41,7 @@ const Dropdown = () => {
 
   return (
     <>
-      <div className=" border border-main-dark bg-white shadow-3xl absolute top-14 right-0 rounded-sm z-50">
+      <div id="dropdown_34rfe34" className=" border border-main-dark bg-white shadow-3xl absolute top-14 right-0 rounded-sm z-50">
         <ul className="select-none">
           {/* dropdown items */}
           <li className="min-w-full flex items-center gap-2 p-3 border-b border-main-dark w-max cursor-pointer bg-main-dark text-main-light">

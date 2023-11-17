@@ -5,7 +5,7 @@ import { Manrope } from "next/font/google";
 const inter = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "QR Forever",
+  title: "Flexible Qr",
   description: "Create a QR code that changes in info but not in look",
 };
 

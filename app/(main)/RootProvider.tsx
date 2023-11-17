@@ -20,7 +20,11 @@ const RootProvider = ({ children, session }: { children: ReactNode; session: Ses
     <div className="bg-main-light min-h-screen text-main-dark">
       <div className="w-full max-w-[1500px] m-auto">
         <SessionProvider session={session}>
-          <Toaster />
+          <Toaster
+            toastOptions={{
+              className: "border border-main-dark bg-white text-main-dark !shadow-3xl !rounded",
+            }}
+          />
           <Navbar />
           <StartModal />
           {children}

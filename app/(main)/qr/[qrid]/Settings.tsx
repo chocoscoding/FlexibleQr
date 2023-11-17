@@ -1,14 +1,15 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import useActiveSection from "@/app/hooks/useActiveSection";
 import InputField from "@/app/components/InputField";
 import useQrInfo from "@/app/hooks/useQrInfo";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { QrContext } from "./Provider";
 const Settings = () => {
+  const { mainInfo, id } = useContext(QrContext)!;
   const { activeSection } = useActiveSection();
-  const { mainInfo,id } = useQrInfo();
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const { push, refresh } = useRouter();
@@ -66,7 +67,7 @@ const Settings = () => {
       />
       <p className="text-sm text-gray-10 my-4">{`Delete this QR (This action is irreversible)`}</p>
       <button
-        className={`bg-red-10 border border-main-dark rounded  min-w-[150px] max-w-[200px] h-[55px] hover:border-2 ${
+        className={`bg-red-10 hover:bg-red-500 border border-main-dark rounded  min-w-[150px] max-w-[200px] h-[55px] hover:border-2 ${
           loading ? "opacity-50" : ""
         }`}
         onClick={submit}

@@ -1,8 +1,11 @@
 "use client";
 import { IoIosArrowBack } from "react-icons/io";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { QrContext } from "./Provider";
 
-const TopNav = ({ name }: { name: string }) => {
+const TopNav = () => {
+  const { mainInfo } = useContext(QrContext)!;
   const { back } = useRouter();
 
   return (
@@ -12,7 +15,7 @@ const TopNav = ({ name }: { name: string }) => {
         onClick={back}>
         <IoIosArrowBack />
       </button>
-      <p className="truncate mr-3 text-[clamp(1rem,0.9471rem_+_0.2824vw,1.3rem)] font-semibold ">{name}</p>
+      <p className="truncate mr-3 text-[clamp(1rem,0.9471rem_+_0.2824vw,1.3rem)] font-semibold ">{mainInfo.name}</p>
     </section>
   );
 };

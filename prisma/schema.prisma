@@ -60,8 +60,8 @@ model Qr {
   qr_image_height Int @default(20)
   qr_image_excavate Excavate @default(YES)
   qr_image_positioning ImagePosition @default(CENTERED)
-  qr_image_X Int @default(20)
-  qr_image_Y Int @default(20)
+  qr_image_X Int @default(0)
+  qr_image_Y Int @default(0)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

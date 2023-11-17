@@ -1,16 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useContext, useEffect, useRef } from "react";
 
 import InputField from "@/app/components/InputField";
 import useActiveSection from "@/app/hooks/useActiveSection";
 import OptionField from "@/app/components/OptionField";
 import RangeField from "@/app/components/RangeField";
-import useQrInfo from "@/app/hooks/useQrInfo";
+import toast from "react-hot-toast";
+import { GrUpdate } from "react-icons/gr";
+import { useRouter } from "next/navigation";
+import { QrContext } from "./Provider";
 const QrStyle = () => {
   const { activeSection } = useActiveSection();
   const {
+    id,
     qr,
+    oldQr,
     qr_size,
     qr_imageSettings,
     qr_image_positioning,
@@ -22,7 +27,82 @@ const QrStyle = () => {
     qr_image_src,
     qr_image_width,
     qr_image_height,
-  } = useQrInfo();
+    oldQr_imageSettings,
+  } = useContext(QrContext)!;
+  const { refresh } = useRouter();
+  const rendercount = useRef(0);
+
+  //to submit the newqr changes
+  const submit = async () => {
+    const { position, excavate, src, width, height, x, y } = qr_imageSettings;
+    const { size, fgColor, bgColor } = qr;
+    toast.dismiss();
+    const loadingToast = toast.loading("Saving changes");
+    try {
+      const apicall = await fetch("/api/user/qr/updatelook", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id,
+          data: {
+            qr_size: ~~size,
+            qr_bg: bgColor,
+            qr_fg: fgColor,
+            qr_image_url: src,
+            qr_image_width: ~~width,
+            qr_image_height: ~~height,
+            qr_image_excavate: excavate,
+            qr_image_positioning: position,
+            qr_image_X: x,
+            qr_image_Y: y,
+          },
+        }),
+      });
+      toast.success('Saved', {
+        id: loadingToast,
+        duration: 800,
+      });
+      refresh();
+      // toast.dismiss();
+    } catch (error) {
+      console.log(error);
+      toast.dismiss();
+      //a toast to run the submit again
+      toast(
+        (t) => (
+          <span className="text-red-600">
+            Could not save changes,
+            <button
+              className="font-bold text-main-dark"
+              onClick={() => submit()}>
+              Retry
+            </button>
+          </span>
+        ),
+        {
+          icon: <GrUpdate />,
+        }
+      );
+    }
+  };
+
+  useEffect(() => {
+    const condition = JSON.stringify(qr) === JSON.stringify(oldQr);
+    const condition2 = JSON.stringify(qr_imageSettings) === JSON.stringify(oldQr_imageSettings);
+
+    //if render count is greater than 0, submit the changes
+    if (rendercount.current > 0) {
+      //timeout to manage control continous changes
+      const timeout = setTimeout(() => {
+        if (!condition || !condition2) submit();
+      }, 1500);
+      return () => clearTimeout(timeout);
+    }
+    rendercount.current++;
+  }, [qr_imageSettings, qr]);
+
   if (activeSection !== 2) return null;
 
   return (
@@ -117,19 +197,19 @@ const QrStyle = () => {
             name="Image X"
             placeholder=""
             id="imageX"
-            min={0}
+            min={1}
             max={qr.size - qr_imageSettings.width}
-            value={qr_imageSettings.x || 0}
+            value={qr_imageSettings.x}
             onchange={qr_image_X}
           />
           <RangeField
             disabled={qr_imageSettings.position === "CENTERED" || !qr_imageSettings.src}
             name="Image Y"
             placeholder=""
-            value={qr_imageSettings.y || 0}
+            value={qr_imageSettings.y}
             onchange={qr_image_Y}
             id="imageY"
-            min={0}
+            min={1}
             max={qr.size - qr_imageSettings.height}
           />
         </div>

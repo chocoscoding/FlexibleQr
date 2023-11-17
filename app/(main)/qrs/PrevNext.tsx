@@ -11,11 +11,11 @@ const PrevNext: FC<PrevNextType> = (props) => {
   const { totalPages, currentPage, setCurrentPage } = props;
   const increment = () => {
     if (currentPage === totalPages) return;
-    setCurrentPage((prev) => ++prev);
+    setCurrentPage((prev) => prev++);
   };
   const decrement = () => {
     if (currentPage <= 1) return;
-    setCurrentPage((prev) => --prev);
+    setCurrentPage((prev) => prev--);
   };
   return (
     <section className="flex justify-between items-center mt-4 ba1:text-sm">
