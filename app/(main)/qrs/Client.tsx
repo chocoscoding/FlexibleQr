@@ -3,6 +3,7 @@ import React, { FC, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import OneQrLink from "./OneQrLink";
 import PrevNext from "./PrevNext";
+import Empty from "./Empty";
 
 interface ClientPropsType {
   list: {
@@ -44,15 +45,19 @@ const Client: FC<ClientPropsType> = (props) => {
             <p className="flex-[2] text-center font-semibold text-sm">Created At</p>
           </div>
 
-          {lists.slice(start, end).map((ele, i) => (
-            <OneQrLink
-              name={ele.name}
-              link={`qr/${ele.linkId}`}
-              status="Active"
-              createdAt={ele.createdAt}
-              key={`oneqrlink_${i}`}
-            />
-          ))}
+          {lists.length < 1 ? (
+            <Empty />
+          ) : (
+            lists.slice(start, end).map((ele, i) => (
+              <OneQrLink
+                name={ele.name}
+                link={`qr/${ele.linkId}`}
+                status="Active"
+                createdAt={ele.createdAt}
+                key={`oneqrlink_${i}`}
+              />
+            ))
+          )}
         </section>
       </div>
 

@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Dropdown from "./Dropdown";
 import { useSession } from "next-auth/react";
+import useNav from "../hooks/useNav";
 const Navigation = () => {
-  const [open, setOpen] = useState(false);
+  const { isOpen, toggle } = useNav();
   const { data } = useSession();
   return (
     <div className="flex items-center gap-3 relative z-[10]">
@@ -19,13 +20,24 @@ const Navigation = () => {
         />
       </div>
       <span
-        onClick={() => setOpen(!open)}
-        className="cursor-pointer">
-        {open ? <AiOutlineClose className="w-[30px] h-[30px]" /> : <AiOutlineMenu className="w-[30px] h-[30px]" />}
+        onClick={() => toggle(!isOpen)}
+        className="cursor-pointer"
+        id="dropdown_toggle_d14223">
+        {isOpen ? (
+          <AiOutlineClose
+            className="w-[30px] h-[30px]"
+            id="dropdown_toggle_d14223"
+          />
+        ) : (
+          <AiOutlineMenu
+            className="w-[30px] h-[30px]"
+            id="dropdown_toggle_d14223"
+          />
+        )}
       </span>
 
       {/* dropdown */}
-      {open ? <Dropdown /> : null}
+      {isOpen ? <Dropdown /> : null}
     </div>
   );
 };

@@ -1,14 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { IoAddCircleOutline } from "react-icons/io5";
-import useFollowersCount from "@/app/hooks/useNewModalState";
+import useNewModalState from "@/app/hooks/useNewModalState";
 import LoadingSvg from "./LoadingSvg";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 const StartModal = () => {
   const { push, refresh } = useRouter();
-  const { isOpen, close, open } = useFollowersCount();
+  const { isOpen, close, open } = useNewModalState();
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const submit = async () => {
