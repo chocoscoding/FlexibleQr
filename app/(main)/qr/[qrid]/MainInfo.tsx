@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { memo, useContext, useState } from "react";
 import useActiveSection from "@/app/hooks/useActiveSection";
 import InputField from "@/app/components/InputField";
 import toast from "react-hot-toast";
@@ -93,4 +93,4 @@ const MainInfo = () => {
   );
 };
 
-export default MainInfo;
+export default memo(MainInfo);

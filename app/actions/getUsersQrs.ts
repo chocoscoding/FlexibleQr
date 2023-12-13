@@ -21,6 +21,9 @@ export default async function getUserQrs() {
         linkId: true,
         createdAt: true,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
     const count = prisma.qr.count({
       where: {

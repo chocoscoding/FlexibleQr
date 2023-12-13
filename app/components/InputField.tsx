@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 interface InputFieldType {
   name: string;
   placeholder: string;
@@ -32,4 +32,4 @@ const InputField: FC<InputFieldType> = ({ name, placeholder, inputType, id, disa
   );
 };
 
-export default InputField;
+export default memo(InputField);

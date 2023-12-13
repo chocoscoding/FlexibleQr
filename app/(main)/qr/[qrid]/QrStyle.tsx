@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useRef } from "react";
+import React, { memo, useContext, useEffect, useRef } from "react";
 
 import InputField from "@/app/components/InputField";
 import useActiveSection from "@/app/hooks/useActiveSection";
@@ -218,4 +218,4 @@ const QrStyle = () => {
   );
 };
 
-export default QrStyle;
+export default memo(QrStyle);

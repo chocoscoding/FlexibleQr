@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 import { SessionProvider } from "next-auth/react";
 import toast, { Toaster } from "react-hot-toast";
 import StartModal from "../components/StartModal";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const RootProvider = ({ children, session }: { children: ReactNode; session: Session | null }) => {
   //to avoid hydration mismatch and clear all toasts on full page rerender
@@ -29,6 +31,8 @@ const RootProvider = ({ children, session }: { children: ReactNode; session: Ses
           <StartModal />
           {children}
           <Footer />
+          <SpeedInsights/>
+      <Analytics/>
         </SessionProvider>
       </div>
     </div>

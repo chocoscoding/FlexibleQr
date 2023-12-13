@@ -1,9 +1,8 @@
 "use client";
 
-import React, { FC, useContext, useState } from "react";
+import React, { FC, memo, useContext, useState } from "react";
 import useActiveSection from "@/app/hooks/useActiveSection";
 import InputField from "@/app/components/InputField";
-import useQrInfo from "@/app/hooks/useQrInfo";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { QrContext } from "./Provider";
@@ -78,4 +77,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default memo(Settings);

@@ -1,10 +1,12 @@
+import dynamic from "next/dynamic";
 import getUserQrById from "@/app/actions/getOneQrById";
 import { notFound } from "next/navigation";
 import { QrContextProvider } from "./Provider";
 import SectionControl from "./SectionControl";
-import MainInfo from "./MainInfo";
-import QrStyle from "./QrStyle";
-import Settings from "./Settings";
+const MainInfo = dynamic(() => import("./MainInfo"));
+const QrStyle = dynamic(() => import("./QrStyle"));
+const Settings = dynamic(() => import("./Settings"));
+
 import QrCode from "./QrCode";
 import TopNav from "./TopNav";
 
