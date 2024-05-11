@@ -31,8 +31,8 @@ const RootProvider = ({ children, session }: { children: ReactNode; session: Ses
           <StartModal />
           {children}
           <Footer />
-          <SpeedInsights/>
-      <Analytics/>
+          <SpeedInsights />
+          <Analytics />
         </SessionProvider>
       </div>
     </div>
