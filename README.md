@@ -1,4 +1,4 @@
-![flexibleqr_thumbnail](https://asset.cloudinary.com/chocoscoding/0535fc26c6ea8291af65dfdffe752b56)
+![flexibleqr_thumbnail](https://res.cloudinary.com/chocoscoding/image/upload/fl_preserve_transparency/v1710160685/Screenshot_2024-03-11_at_13.12.17_v4gipc.jpg?_s=public-apps)
 
 # FlexibleQr
 
