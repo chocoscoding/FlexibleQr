@@ -23,7 +23,7 @@ const QrCode = () => {
   const qrcode = (
     <QRCodeSVG
       id="qrCode"
-      value={`https://flexibleqr.codes/r/${linkId}`}
+      value={`https://flexibleqrcodes.vercel.app/r/${linkId}`}
       level={"H"}
       size={qr.size}
       bgColor={qr.bgColor}
